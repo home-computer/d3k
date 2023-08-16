@@ -13,5 +13,5 @@ services:
       #   sync: false
       - key: WEBHOOK_URL
         sync: false
-      - key: TELOXIDE_TOKE
+      - key: TELOXIDE_TOKEN
         sync: false

@@ -1,5 +1,5 @@
 # TODO: build as release for prod
-FROM docker.io/library/rust:1.70-slim AS chef
+FROM docker.io/library/rust:1.71-slim AS chef
 
 WORKDIR /srv/app
 
@@ -30,7 +30,7 @@ ENV SQLX_OFFLINE=true
 # RUN cargo build --release --no-default-features 
 RUN cargo build -p delurker_3000 --no-default-features
 
-FROM docker.io/library/debian:buster-slim as runtime
+FROM docker.io/library/debian:buster-20230814-slim as runtime
 WORKDIR /srv/app
 # COPY --from=builder /srv/app/target/debug/web /srv/app/target/debug/worker /usr/local/bin/
 COPY --from=builder /srv/app/target/debug/delurker_3000 /usr/local/bin/

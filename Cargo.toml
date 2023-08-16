@@ -1,0 +1,48 @@
+[workspace]
+resolver = "2"
+members = ["deps/", "dylink/"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+
+[workspace.dependencies]
+deps = { path = "deps/" }
+dylink = { path = "dylink/" }
+
+[package]
+name = "delurker_3000"
+version.workspace = true
+edition.workspace = true
+
+[features]
+default = ["dylink"]
+
+[build-dependencies]
+shadow-rs = "0.23"
+
+[dependencies]
+shadow-rs = "0.23"
+deps = { workspace = true }
+dylink = { workspace = true, optional = true }
+# the following contain macros that don't like being re-exported
+sqlx = { version = "0.7", features = [
+  "postgres",
+  "runtime-tokio-rustls",
+  "time",
+  "uuid",
+  "macros",
+  "json",
+  "migrate",
+  # "ipnetwork",
+] }
+
+
+[profile.dev]
+# debug = false
+
+# builds dependeinces with release optimizations
+[profile.dev.package."*"]
+# opt-level = 3
+
+[patch.crates-io]

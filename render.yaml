@@ -1,0 +1,17 @@
+services:
+  # A Docker web service
+  - type: web
+    name: d3k
+    repo: https://github.com/home-computer/d3k.git # optional
+    runtime: docker
+    plan: free
+    dockerfilePath: ./d3k.Dockerfile # optional
+    healthCheckPath: /up
+    # region: frankfurt
+    envVars:
+      # - key: DATABASE_URL
+      #   sync: false
+      - key: WEBHOOK_URL
+        sync: false
+      - key: TELOXIDE_TOKE
+        sync: false

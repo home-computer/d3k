@@ -1,0 +1,11 @@
+*
+!Cargo.toml
+!Cargo.lock
+
+!deps
+!dylink
+
+!src
+!migrations
+!build.rs/
+!.sqlx/
